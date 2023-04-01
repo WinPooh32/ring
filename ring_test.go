@@ -74,8 +74,6 @@ func TestRing(t *testing.T) {
 		t.Fail()
 		return
 	}
-
-	t.Fail()
 }
 
 func TestRing2(t *testing.T) {
