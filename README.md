@@ -23,14 +23,14 @@ func main() {
 
 	ringBuf := ring.Make[int](capacity)
 
-	for i, v := range data {
+	for _, v := range data {
 		pop, elem := ringBuf.Push(v)
 		if pop {
 			fmt.Println(elem)
 		}
 	}
 
-	l, r = ringBuf.TwoParts()
+	l, r := ringBuf.TwoParts()
 
 	fmt.Println(l, r)
 }
