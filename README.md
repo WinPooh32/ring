@@ -13,7 +13,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/WinPooh32/async"
+	"github.com/WinPooh32/ring"
 )
 
 func main() {
@@ -21,7 +21,7 @@ func main() {
 
 	data := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
 
-	ringBuf := Make[int](capacity)
+	ringBuf := ring.Make[int](capacity)
 
 	for i, v := range data {
 		pop, elem := ringBuf.Push(v)
@@ -31,7 +31,7 @@ func main() {
 	}
 
 	l, r = ringBuf.TwoParts()
-	
+
 	fmt.Println(l, r)
 }
 ```
