@@ -1,8 +1,5 @@
 package ring
 
-// template type Ring(DType)
-type DType int
-
 // Ring is a fixed-size circular buffer.
 type Ring[T any] struct {
 	buf []T
