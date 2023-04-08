@@ -62,6 +62,20 @@ func (r *Ring[T]) Front() (value T) {
 	return r.buf[r.ptr]
 }
 
+// Range applies f to every element of the buffer.
+func (r *Ring[T]) Range(f func(i int, v T)) {
+	left, right := r.TwoParts()
+	length := len(left)
+
+	for i, v := range left {
+		f(i, v)
+	}
+
+	for i, v := range right {
+		f(length+i, v)
+	}
+}
+
 // Copy makes copy of the ring buffer to dst slice.
 // Returns count of copied items.
 func (r *Ring[T]) CopyTo(dst []T) (n int) {

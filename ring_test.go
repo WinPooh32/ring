@@ -36,6 +36,21 @@ func TestRing(t *testing.T) {
 		return
 	}
 
+	k := 0
+	ringBuf.Range(func(i int, v int) {
+		if want[i] != v {
+			t.Logf("want: %+v, got: %+v", want[i], v)
+			t.Fail()
+			return
+		}
+
+		k++
+	})
+
+	if k != len(want) {
+		t.Logf("want length: %+v, got: %+v", len(want), k)
+	}
+
 	l, r := ringBuf.TwoParts()
 
 	t.Log(l, r)
@@ -105,6 +120,21 @@ func TestRing2(t *testing.T) {
 		t.Logf("want: %+v, got: %+v", want, got)
 		t.Fail()
 		return
+	}
+
+	k := 0
+	ringBuf.Range(func(i int, v int) {
+		if want[i] != v {
+			t.Logf("want: %+v, got: %+v", want[i], v)
+			t.Fail()
+			return
+		}
+
+		k++
+	})
+
+	if k != len(want) {
+		t.Logf("want length: %+v, got: %+v", len(want), k)
 	}
 
 	l, r := ringBuf.TwoParts()
