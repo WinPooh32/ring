@@ -14,7 +14,7 @@ func TestRing(t *testing.T) {
 	for i, v := range data {
 		t.Logf("push back %v", v)
 
-		pop, elem := ringBuf.Push(v)
+		elem, pop := ringBuf.Push(v)
 		if pop && i >= capacity && elem != data[i-capacity] {
 			t.FailNow()
 		}
@@ -100,7 +100,7 @@ func TestRing2(t *testing.T) {
 	for i, v := range data {
 		t.Logf("push back %v", v)
 
-		pop, elem := ringBuf.Push(v)
+		elem, pop := ringBuf.Push(v)
 		if pop && i >= capacity && elem != data[i-capacity] {
 			t.FailNow()
 		}

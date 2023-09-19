@@ -24,7 +24,7 @@ func main() {
 	ringBuf := ring.Make[int](capacity)
 
 	for _, v := range data {
-		pop, elem := ringBuf.Push(v)
+		elem, pop := ringBuf.Push(v)
 		if pop {
 			fmt.Println(elem)
 		}
@@ -35,7 +35,9 @@ func main() {
 	fmt.Println(l, r)
 }
 ```
+
 Output:
+
 ```
 0
 1

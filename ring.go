@@ -41,7 +41,7 @@ func (r *Ring[T]) Full() bool {
 
 // Push adds new item to the end of buffer
 // and pops first item if buffer is full.
-func (r *Ring[T]) Push(value T) (pop bool, elem T) {
+func (r *Ring[T]) Push(value T) (elem T, pop bool) {
 	if r.Full() {
 		pop = true
 		elem = r.popFront()
@@ -49,7 +49,7 @@ func (r *Ring[T]) Push(value T) (pop bool, elem T) {
 
 	r.pushBack(value)
 
-	return pop, elem
+	return elem, pop
 }
 
 // Back returns the last item of the buffer.
